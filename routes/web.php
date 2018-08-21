@@ -14,3 +14,8 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::name('auth.')->group(function () {
+	Auth::routes();
+});
+
+Route::get('/home', 'HomeController@index')->name('home');

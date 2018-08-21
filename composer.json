@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "name": "ivan/ss-augur",
+    "description": "A pathfinder world builder and virtual game room.",
+    "keywords": ["framework", "laravel", "pathfinder", "game", "room", "lobby"],
     "license": "MIT",
     "type": "project",
     "require": {
