@@ -5,27 +5,23 @@ namespace App\Models\Setting;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 
-class Library extends Model
+class Tag extends Model
 {
-
     protected $fillable = [
-        'title'
+        'value'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function sections()
+    public function records()
     {
-        return $this->hasMany(Section::class);
+        return $this->belongsToMany(Record::class);
     }
 
     /**
@@ -35,5 +31,14 @@ class Library extends Model
     public function scopeOwned($query)
     {
         return $query->where('user_id', auth()->id());
+    }
+
+    /**
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @param string $value
+     * @return \Illuminate\Database\Eloquent\Builder
+     */
+    public function scopeWithValue($query, $value) {
+        return $query->where('value', $value);
     }
 }
