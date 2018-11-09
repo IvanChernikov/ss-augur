@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\Table;
+namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Token extends Model
+class Section extends Model
 {
     //
 }

@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-					{{ now() }}
+					<a class="btn btn-block" href="/world">My Campaign Settings</a>
                 </div>
             </div>
         </div>

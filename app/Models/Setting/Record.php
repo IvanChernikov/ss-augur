@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Models\World;
+namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Faction extends Model
+class Record extends Model
 {
     //
 }

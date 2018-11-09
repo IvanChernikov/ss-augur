@@ -19,3 +19,8 @@ Route::name('auth.')->group(function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::name('world.')->prefix('world')->group(function() {
+	Route::get('', 'World\NavigationController@index')->name('index');
+	Route::get('edit', 'World\NavigationController@edit')->name('edit');
+});
