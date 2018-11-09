@@ -3,6 +3,7 @@
 namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Seekable;
 
 /**
  * Class Section
@@ -10,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Section extends Model
 {
+    use Seekable;
+
     public $fillable = [
         'title'
     ];
@@ -28,5 +31,13 @@ class Section extends Model
     public function tomes()
     {
         return $this->hasMany(Tome::class);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getReferenceAttribute()
+    {
+        return 'title';
     }
 }

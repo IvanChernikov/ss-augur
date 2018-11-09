@@ -4,13 +4,19 @@ namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Traits\Owned;
 
 class Tag extends Model
 {
+    use Owned;
+
     protected $fillable = [
         'value'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -22,15 +28,6 @@ class Tag extends Model
     public function records()
     {
         return $this->belongsToMany(Record::class);
-    }
-
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeOwned($query)
-    {
-        return $query->where('user_id', auth()->id());
     }
 
     /**

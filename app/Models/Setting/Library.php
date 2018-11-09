@@ -4,9 +4,11 @@ namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Traits\Owned;
 
 class Library extends Model
 {
+    use Owned;
 
     protected $fillable = [
         'title'
@@ -28,12 +30,4 @@ class Library extends Model
         return $this->hasMany(Section::class);
     }
 
-    /**
-     * @param \Illuminate\Database\Eloquent\Builder $query
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-    public function scopeOwned($query)
-    {
-        return $query->where('user_id', auth()->id());
-    }
 }

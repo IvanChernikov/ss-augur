@@ -3,9 +3,12 @@
 namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\Seekable;
 
 class Tome extends Model
 {
+    use Seekable;
+
     protected $fillable = [
         'title'
     ];
@@ -24,5 +27,13 @@ class Tome extends Model
     public function records()
     {
         return $this->hasMany(Record::class);
+    }
+
+    /**
+     * @return string
+     */
+    protected function getReferenceAttribute()
+    {
+        return 'title';
     }
 }
