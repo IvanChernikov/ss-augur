@@ -3,15 +3,22 @@
 namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
 use App\Traits\Owned;
+use App\Models\Auth\User;
 
-class Library extends Model
+/**
+ * Class Universe
+ * @package App\Models\Setting
+ * @property integer $id
+ * @property string $name
+ * @property string $description
+ */
+class Universe extends Model
 {
     use Owned;
 
     protected $fillable = [
-        'title'
+        'name', 'description'
     ];
 
     /**
@@ -25,9 +32,8 @@ class Library extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function sections()
+    public function entities()
     {
-        return $this->hasMany(Section::class);
+        return $this->hasMany(Entity::class);
     }
-
 }

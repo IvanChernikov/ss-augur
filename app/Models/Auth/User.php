@@ -1,14 +1,17 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Auth;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use App\Models\Setting\Library;
 
 /**
  * Class User
- * @package App\Models
+ * @package App\Models\Auth
+ * @property integer $id
+ * @property string $name
+ * @property string $email
+ * @property string $password
  */
 class User extends Authenticatable
 {
@@ -32,11 +35,5 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function libraries()
-    {
-        return $this->hasMany(Library::class);
-    }
+
 }
