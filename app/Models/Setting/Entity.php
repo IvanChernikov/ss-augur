@@ -5,14 +5,28 @@ namespace App\Models\Setting;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * Class Entity
- * @package App\Models\Setting
- * @property integer $id
+ * App\Models\Setting\Entity
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $name
- * @property integer $entity_type_id
- * @property integer $universe_id
- * @property EntityType $type
- * @property Universe $universe
+ * @property int $universe_id
+ * @property int $entity_type_id
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Setting\Note[] $notes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Setting\Tag[] $tags
+ * @property-read \App\Models\Setting\EntityType $type
+ * @property-read \App\Models\Setting\Universe $universe
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity whereEntityTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity whereUniverseId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Entity whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class Entity extends Model
 {

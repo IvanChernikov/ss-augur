@@ -4,13 +4,28 @@ namespace App\Models\Setting;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 /**
- * Class EntityType
- * @package App\Models\Setting
- * @property integer $id
+ * App\Models\Setting\EntityType
+ *
+ * @property int $id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
  * @property string $name
  * @property string $slug
  * @property string $description
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Setting\Attribute[] $attributes
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\Setting\Entity[] $entities
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType query()
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereSlug($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereUpdatedAt($value)
+ * @mixin \Eloquent
  */
 class EntityType extends Model
 {
