@@ -26,9 +26,16 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereSlug($value)
  * @method static \Illuminate\Database\Eloquent\Builder|EntityType whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class EntityType extends Model
 {
+    const RESERVED_NAME_CHARACTER = 'character';
+    const RESERVED_NAME_LOCATION = 'location';
+    const RESERVED_NAME_ITEM = 'item';
+    const RESERVED_NAME_EVENT = 'event';
+    const RESERVED_NAME_DEITY = 'deity';
+
     protected $fillable = [
         'name', 'slug', 'description'
     ];

@@ -11,20 +11,20 @@ use Carbon\Carbon;
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
- * @property string|integer|\Carbon|\StdClass|\Entity $data
+ * @property string|integer|Carbon|\StdClass|Entity $data
  * @property int $attribute_id
  * @property int $entity_id
  * @property-read \App\Models\Setting\Attribute $attribute
  * @property-read \App\Models\Setting\Entity $entity
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value query()
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value whereAttributeId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value whereCreatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value whereData($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value whereEntityId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value whereId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Setting\Value whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Value newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Value newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Value query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Value whereAttributeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Value whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Value whereData($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Value whereEntityId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Value whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Value whereUpdatedAt($value)
  * @mixin \Eloquent
  */
 class Value extends Model
@@ -71,6 +71,8 @@ class Value extends Model
         switch ($this->attribute->data_type) {
             case Attribute::TYPE_STRING:
                 return (string) $this->data;
+            case Attribute::TYPE_FLOAT:
+                return (float) $this->data;
             case Attribute::TYPE_INTEGER:
                 return (integer) $this->data;
             case Attribute::TYPE_DATE:
@@ -80,6 +82,7 @@ class Value extends Model
             case Attribute::TYPE_ENTITY:
                 return Entity::find($this->data);
         }
+        return $this->data;
     }
 
     /**
@@ -91,6 +94,8 @@ class Value extends Model
             case Attribute::TYPE_STRING:
                 $this->data = (string) $value;
                 break;
+            case Attribute::TYPE_FLOAT:
+                $this->data = (float) $value;
             case Attribute::TYPE_INTEGER:
                 $this->data = (integer) $value;
                 break;

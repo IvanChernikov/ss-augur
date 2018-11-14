@@ -32,6 +32,7 @@ class Attribute extends Model
     const TYPE_DATE = 'date';
     const TYPE_JSON = 'json';
     const TYPE_ENTITY = 'entity';
+    const TYPE_FLOAT = 'float';
 
     protected $fillable = [
         'name', 'data_type'

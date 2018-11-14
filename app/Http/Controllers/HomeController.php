@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Setting\Universe;
 
 class HomeController extends Controller
 {
@@ -24,5 +24,16 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function landing()
+    {
+        return view('landing');
+    }
+
+    public function settings()
+    {
+        $universes = Universe::owned()->get();
+        return view('setting.list', compact('universes'));
     }
 }

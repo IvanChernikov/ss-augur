@@ -2,6 +2,7 @@
 
 namespace App\Models\Auth;
 
+use App\Models\Setting\Universe;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -28,6 +29,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Auth\User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Auth\User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Auth\User whereUpdatedAt($value)
+ * @mixin \Illuminate\Database\Eloquent\Builder
  */
 class User extends Authenticatable
 {
@@ -51,5 +53,7 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
+    public function universes() {
+        return $this->hasMany(Universe::class);
+    }
 }

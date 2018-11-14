@@ -17,7 +17,6 @@ class CreateEntityTypesTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('name');
-            $table->string('slug');
             $table->text('description');
         });
     }
