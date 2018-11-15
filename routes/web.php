@@ -6,12 +6,16 @@
 
 Auth::routes();
 
-Route::middleware('guest')->get('/', 'HomeController@landing')->name('landing');
-Route::middleware('auth')->get('/', 'HomeController@index')->name('home');
+Route::get('/', 'NavigationController@index')->name('index');
 
-Route::get('/setting/list', 'HomeController@settings')->name('setting.list');
-Route::get('/setting/edit/{universe}', 'EditorController@edit')->name('setting.edit');
+Route::middleware('guest')->group(function () {
+    Route::get('/landing', 'NavigationController@landing')->name('landing');
+});
 
 Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', 'NavigationController@dashboard')->name('dashboard');
+    Route::get('/setting/list', 'NavigationController@settings')->name('setting.list');
+    Route::get('/setting/edit/{universe}', 'EditorController@edit')->name('setting.edit');
+
     Route::resource('universe', 'Setting\UniverseController');
 });

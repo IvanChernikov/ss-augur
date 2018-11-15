@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Setting\Universe;
 
-class HomeController extends Controller
+class NavigationController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -13,7 +13,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+    }
+
+    public function index()
+    {
+        return auth()->guest() ? $this->landing() : $this->dashboard();
     }
 
     /**
@@ -21,9 +25,9 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function dashboard()
     {
-        return view('home');
+        return view('dashboard');
     }
 
     public function landing()

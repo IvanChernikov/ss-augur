@@ -1,5 +1,9 @@
 @extends ('layouts.app')
 
+@push ('js-deferred')
+    <script src="{{ asset('EdiEditor.js}}" defer></script>
+@endpush
+
 @section ('content')
     <div class="container">
         <h2>Editing: <i>{{ $universe->name }}</i>
